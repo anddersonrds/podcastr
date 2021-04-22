@@ -22,18 +22,45 @@ const GlobalStyles: GlobalStyleComponent<
   }
 
   ${({ theme, removeBg }) => css`
-    html {
-      font-size: 62.5%;
+    @media (max-width: 1080px) {
+      html {
+        font-size: 93.75%;
+      }
+    }
+
+    @media (max-width: 720px) {
+      html {
+        font-size: 87.5%;
+      }
     }
 
     body {
-      font-family: ${theme.font.family};
-      font-size: ${theme.font.sizes.medium};
-
       ${!removeBg &&
       css`
-        background-color: ${theme.colors.mainBg};
+        background-color: ${theme.colors.gray50};
       `}
+    }
+
+    body,
+    input,
+    textarea,
+    button {
+      font-family: ${theme.font.family};
+      font-weight: 500;
+      font-size: ${theme.font.sizes.xsmall};
+      color: ${theme.colors.gray500};
+    }
+
+    h1 {
+      font-size: ${theme.font.sizes.xlarge};
+    }
+
+    h2 {
+      font-size: ${theme.font.sizes.medium};
+    }
+
+    button {
+      cursor: pointer;
     }
   `};
 `
