@@ -7,9 +7,10 @@ export default {
     radius: '0.4rem'
   },
   font: {
-    family: 'Poppins, sans-serif',
-    light: 300,
-    normal: 400,
+    inter: 'inter, sans-serif',
+    lexend: 'lexend, sans-serif',
+    light: 400,
+    normal: 500,
     bold: 600,
     sizes: {
       xxsmall: '0.5rem',
@@ -36,13 +37,13 @@ export default {
     purple800: '#6F48C9'
   },
   spacings: {
-    xxsmall: '0.8rem',
-    xsmall: '1.6rem',
-    small: '2.4rem',
-    medium: '3.2rem',
-    large: '4.0rem',
-    xlarge: '4.8rem',
-    xxlarge: '5.6rem'
+    xxsmall: '0.25rem',
+    xsmall: '1rem',
+    small: '1.5rem',
+    medium: '2rem',
+    large: '2.5rem',
+    xlarge: '3rem',
+    xxlarge: '4rem'
   },
   layers: {
     base: 10,

@@ -45,10 +45,21 @@ const GlobalStyles: GlobalStyleComponent<
     input,
     textarea,
     button {
-      font-family: ${theme.font.family};
-      font-weight: 500;
+      font-family: ${theme.font.inter};
+      font-weight: ${theme.font.normal};
       font-size: ${theme.font.sizes.xsmall};
       color: ${theme.colors.gray500};
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: ${theme.font.bold};
+      font-family: ${theme.font.lexend};
+      color: ${theme.colors.gray800};
     }
 
     h1 {
