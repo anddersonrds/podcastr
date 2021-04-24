@@ -1,4 +1,4 @@
-import {
+import styled, {
   createGlobalStyle,
   css,
   GlobalStyleComponent,
@@ -74,6 +74,14 @@ const GlobalStyles: GlobalStyleComponent<
       cursor: pointer;
     }
   `};
+`
+
+export const Wrapper = styled.div`
+  display: flex;
+
+  > main {
+    flex: 1;
+  }
 `
 
 export default GlobalStyles
