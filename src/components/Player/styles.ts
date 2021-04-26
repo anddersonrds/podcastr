@@ -45,6 +45,31 @@ export const EmptyPlayer = styled.div`
     );
   `}
 `
+
+export const CurrentPlayer = styled.div`
+  ${({ theme }) => css`
+    text-align: center;
+
+    img {
+      border-radius: ${theme.spacings.small};
+    }
+
+    strong {
+      display: block;
+      margin-top: ${theme.spacings.medium};
+      font: ${theme.font.bold} ${theme.font.lexend} ${theme.font.sizes.small};
+      line-height: 1.75rem;
+    }
+
+    span {
+      display: block;
+      margin-top: ${theme.spacings.xsmall};
+      opacity: 0.6;
+      line-height: ${theme.spacings.small};
+    }
+  `}
+`
+
 type FooterProps = {
   empty?: boolean
 }
@@ -78,7 +103,7 @@ export const Slider = styled.div`
   ${({ theme }) => css`
     flex: 1;
 
-    > div {
+    > main {
       width: 100%;
       height: 4px;
       border-radius: 2px;
