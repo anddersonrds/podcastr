@@ -14,15 +14,32 @@ import { Episode } from 'templates/Home'
 function App({ Component, pageProps }: AppProps) {
   const [episodeList, setEpisodeList] = useState([])
   const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0)
+  const [isPlaying, setIsPlaying] = useState(false)
 
   const handlePlay = (episode: Episode): void => {
     setEpisodeList([episode])
     setCurrentEpisodeIndex(0)
+    setIsPlaying(true)
+  }
+
+  const handleTogglePlay = () => {
+    setIsPlaying(!isPlaying)
+  }
+
+  const HandleSetPlayingState = (state: boolean) => {
+    setIsPlaying(state)
   }
 
   return (
     <PlayerContext.Provider
-      value={{ episodeList, currentEpisodeIndex, handlePlay }}
+      value={{
+        episodeList,
+        currentEpisodeIndex,
+        isPlaying,
+        handlePlay,
+        handleTogglePlay,
+        HandleSetPlayingState
+      }}
     >
       <ThemeProvider theme={theme}>
         <Head>

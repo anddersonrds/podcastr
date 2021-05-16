@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { useContext } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import { PlayerContext } from 'contexts/PlayerContext'
 
 import Slider from 'rc-slider'
@@ -10,9 +10,29 @@ import PlayerButton from 'components/PlayerButton'
 import * as S from './styles'
 
 const Player = () => {
-  const { episodeList, currentEpisodeIndex } = useContext(PlayerContext)
+  const {
+    episodeList,
+    currentEpisodeIndex,
+    isPlaying,
+    handleTogglePlay,
+    HandleSetPlayingState
+  } = useContext(PlayerContext)
+
+  const audioRef = useRef<HTMLAudioElement>(null)
 
   const episode = episodeList[currentEpisodeIndex]
+
+  useEffect(() => {
+    if (!audioRef.current) {
+      return
+    }
+
+    if (isPlaying) {
+      audioRef.current.play()
+    } else {
+      audioRef.current.pause()
+    }
+  }, [isPlaying])
 
   return (
     <S.Wrapper>
@@ -56,12 +76,26 @@ const Player = () => {
           <span>00:00</span>
         </S.Progress>
 
+        {episode && (
+          <audio
+            ref={audioRef}
+            src={episode.url}
+            autoPlay
+            onPlay={() => HandleSetPlayingState(true)}
+            onPause={() => HandleSetPlayingState(false)}
+          />
+        )}
+
         <S.ButtonsWrapper>
-          <PlayerButton preset="shuffle" />
-          <PlayerButton preset="previous" />
-          <PlayerButton preset="play" />
-          <PlayerButton preset="next" />
-          <PlayerButton preset="repeat" />
+          <PlayerButton preset="shuffle" disabled={!episode} />
+          <PlayerButton preset="previous" disabled={!episode} />
+          <PlayerButton
+            preset={isPlaying ? 'pause' : 'play'}
+            onClick={handleTogglePlay}
+            disabled={!episode}
+          />
+          <PlayerButton preset="next" disabled={!episode} />
+          <PlayerButton preset="repeat" disabled={!episode} />
         </S.ButtonsWrapper>
       </S.FooterPlayer>
     </S.Wrapper>
