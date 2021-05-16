@@ -1,10 +1,12 @@
 import * as S from './styles'
 
 export type ButtonProps = {
-  preset: 'shuffle' | 'previous' | 'play' | 'next' | 'repeat'
+  preset: 'shuffle' | 'previous' | 'play' | 'pause' | 'next' | 'repeat'
+  onClick?: () => void
+  disabled?: boolean
 }
 
-const PlayerButton = ({ preset }: ButtonProps) => {
+const PlayerButton = ({ preset, disabled, onClick }: ButtonProps) => {
   const typeButton = {
     shuffle: {
       path: 'img/shuffle.svg',
@@ -18,6 +20,10 @@ const PlayerButton = ({ preset }: ButtonProps) => {
       path: 'img/play.svg',
       alt: 'Tocar'
     },
+    pause: {
+      path: 'img/pause.svg',
+      alt: 'Pausar'
+    },
     next: {
       path: 'img/next.svg',
       alt: 'Tocar próxima'
@@ -29,7 +35,12 @@ const PlayerButton = ({ preset }: ButtonProps) => {
   }
 
   return (
-    <S.Wrapper type="button" preset={preset}>
+    <S.Wrapper
+      type="button"
+      preset={preset}
+      disabled={disabled}
+      onClick={onClick}
+    >
       <img src={typeButton[preset].path} alt={typeButton[preset].alt} />
     </S.Wrapper>
   )
